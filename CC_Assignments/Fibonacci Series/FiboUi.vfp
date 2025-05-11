@@ -1,0 +1,18 @@
+<apex:page controller="FibonacciSeries">
+    <apex:form>
+        <apex:pageBlock title="Fibonacci Series Generator">
+            <apex:pageBlockSection columns="1">
+                <apex:inputText value="{!fiboSize}" label="Number of Terms"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons>
+                <apex:commandButton value="Generate" action="{!generateSeries}"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Fibonacci Series" rendered="{!NOT(ISNULL(fibonacciSeries))}">
+                <apex:repeat value="{!fibonacciSeries}" var="term">
+                    <apex:outputText value="{!term}"/>
+                    <br/>
+                </apex:repeat>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
