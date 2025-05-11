@@ -1,3 +1,4 @@
+
 from nltk.corpus import wordnet, stopwords
 from nltk.stem import WordNetLemmatizer
 from nltk.tag import pos_tag
@@ -22,7 +23,7 @@ def get_pos(pos: str):
     return wordnet.NOUN
 
 def process_query(query: str):
-    query = query.lower()
+    query = query.lower() #T S P L 
     query_tokens = word_tokenize(query)
     stop_words = set(stopwords.words('english'))
     
