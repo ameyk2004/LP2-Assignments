@@ -1,0 +1,26 @@
+public class FibonacciSeries {
+   
+    public List<Integer> fibonacciSeries {get; set;}
+    public Integer fiboSize {get; set;}
+    
+    public FibonacciSeries(){
+        fibonacciSeries = new List<Integer>(); 
+    }
+    
+    public void generateSeries(){
+        fibonacciSeries.clear();  // Ensure fresh generation
+
+        if (fiboSize <= 0) return;
+        if (fiboSize >= 1) fibonacciSeries.add(0);
+        if (fiboSize >= 2) fibonacciSeries.add(1);
+        
+        for (Integer i = 2; i < fiboSize; i++) {
+            Integer f1 = fibonacciSeries[i - 2];
+            Integer f2 = fibonacciSeries[i - 1];
+            fibonacciSeries.add(f1 + f2);
+        }
+        
+    }
+    
+
+}
