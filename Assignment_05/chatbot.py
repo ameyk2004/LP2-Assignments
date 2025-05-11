@@ -32,6 +32,7 @@ def process_query(query):
     stop_words = set(stopwords.words('english'))
     query_tokens = [word for word in query_tokens if word not in stop_words]
     
+    
     pos_tokens = pos_tag(query_tokens)
     
     ##Lemmatization
@@ -67,6 +68,3 @@ def main():
         
 if __name__ == "__main__":
     main()
-
-
-# Amey is a very good boy and is reading really well
