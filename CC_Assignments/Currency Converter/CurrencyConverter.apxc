@@ -1,0 +1,37 @@
+public class CurrencyControllerPrac1 {
+    public Decimal amount { get; set; }
+    public String fromCurrency { get; set; }
+    public String toCurrency { get; set; }
+    public Decimal convertedAmount { get; set; }
+    public boolean showResult { get; set; }
+
+    // All rates are relative to USD
+    public Map<String, Decimal> conversionRates = new Map<String, Decimal>{
+        'USD' => 1.0,
+        'INR' => 0.012,   // 1 INR = 0.012 USD
+        'GBP' => 1.26,    // 1 GBP = 1.26 USD
+        'EUR' => 1.08,    // 1 EUR = 1.08 USD
+        'JPY' => 0.0064   // 1 JPY = 0.0064 USD
+    };
+
+    public List<SelectOption> getCurrencyOptions() {
+        List<SelectOption> options = new List<SelectOption>();
+        for (String key : conversionRates.keySet()) {
+            options.add(new SelectOption(key, key));
+        }
+        return options;
+    }
+
+    public void convertCurrency() {
+        showResult = false;
+        if (conversionRates.containsKey(fromCurrency) && conversionRates.containsKey(toCurrency)) {
+            // Convert from source to USD, then USD to target
+            Decimal amountInUsd = amount * conversionRates.get(fromCurrency);
+            convertedAmount = amountInUsd / conversionRates.get(toCurrency);
+            showResult = true;
+        } else {
+            convertedAmount = 0;
+            showResult = false;
+        }
+    }
+}
